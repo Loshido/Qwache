@@ -1,47 +1,48 @@
-# Qwik Library ⚡️
+# Qwache
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik on GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
-- [Partytown](https://partytown.builder.io/)
-- [Mitosis](https://github.com/BuilderIO/mitosis)
-- [Builder.io](https://www.builder.io/)
+cache your data effortless using Qwik
 
----
+```tsx
+const data = useSignal<number>();
+useTask$(async () => {
+    // cache some data until it is expired, and get fresh data using the callback.
 
-## Project Structure
+    data.value = await cache<number>( 
+        'data', // cache identifier
+        async () => { // callback to get fresh data
+            return Math.random() 
+        }, 
+        10 // data expires after 10s
+    ) 
+})
 
-Inside your project, you'll see the following directories and files:
-
-```
-├── public/
-│   └── ...
-└── src/
-    ├── components/
-    │   └── ...
-    └── index.ts
+return <>
+    cache: { data.value }
+</> 
 ```
 
-- `src/components`: Recommended directory for components.
+## Create the cache fn
 
-- `index.ts`: The entry point of your component library, make sure all the public components are exported from this file.
-
-## Development
-
-Development mode uses [Vite's development server](https://vitejs.dev/). For Qwik during development, the `dev` command will also server-side render (SSR) the output. The client-side development modules are loaded by the browser.
-
-```
-bun dev
+```ts
+// use memory as a cache driver (default)
+const cache = createCache(
+    createMemoryCachee()
+);
 ```
 
-> Note: during dev mode, Vite will request many JS files, which does not represent a Qwik production build.
-
-## Production
-
-The production build should generate the production build of your component library in (./lib) and the typescript type definitions in (./lib-types).
-
-```
-bun build
+```ts
+const cache = createCache(
+    createMemoryCachee({
+        get<T>(id: string): Promise<T | undefined> => {
+            // gets data for a specific id
+        },
+        set<T>(id: string, data: T): Promise<void> => {
+            // sets data for specific id
+            // you don't have to handle ttl.
+        },
+        list(): Promise<string[]> => {
+            // lists ids
+        } 
+    })
+);
 ```
