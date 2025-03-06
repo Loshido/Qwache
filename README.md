@@ -1,6 +1,6 @@
 # Qwache
 
-cache your data effortless using Qwik
+cache & distribute data effortlessly in Qwik
 
 ```tsx
 const data = useSignal<number>();
@@ -20,6 +20,10 @@ return <>
     cache: { data.value }
 </> 
 ```
+
+## Install
+
+`bun install qwache`
 
 ## Create the cache fn
 

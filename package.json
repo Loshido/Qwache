@@ -1,7 +1,7 @@
 {
   "name": "qwache",
-  "version": "0.0.1",
-  "description": "hook for caching",
+  "version": "0.0.3",
+  "description": "cache & distribute data effortlessly in Qwik",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
   "types": "./lib-types/index.d.ts",
