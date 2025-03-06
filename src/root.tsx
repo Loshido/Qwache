@@ -1,17 +1,13 @@
-import { Counter } from "./components/counter/counter";
-import { Logo } from "./components/logo/logo";
+import Test from "~/components/test";
 
 export default () => {
-  return (
-    <>
-      <head>
-        <meta charset="utf-8" />
-        <title>Qwik Blank App</title>
-      </head>
-      <body>
-        <Logo />
-        <Counter />
-      </body>
-    </>
-  );
+    return <>
+        <head>
+            <meta charset="utf-8" />
+            <title>Qwik Blank App</title>
+        </head>
+        <body>
+            <Test/>
+        </body>
+    </>;
 };
