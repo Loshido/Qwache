@@ -1,6 +1,6 @@
 {
   "name": "qwache",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "cache & distribute data effortlessly in Qwik",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
