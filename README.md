@@ -2,6 +2,8 @@
 
 It provides hooks to deliver and cache data seamlessly.
 
+*// inspiration from https://unstorage.unjs.io/*
+
 #### *Concrete example*
 ```tsx
 const data = useSignal<number>();
